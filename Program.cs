@@ -1,18 +1,26 @@
 ﻿int[,] maze = new int[10, 50];
-
+Dictionary<string, string> shoudVerifyPos = new Dictionary<string, string>();
+Dictionary<string, string> verifiedPostions = new Dictionary<string, string>();
+#region initial pos
 Random rand = new();
 int linhaPartida = rand.Next(1, 9);
 maze[linhaPartida, 1] = 2;
-
+shoudVerifyPos.Add(linhaPartida + "/" + 1, linhaPartida + "/" + 1);
+#endregion
+#region end pos
 int linhaObjetivo = rand.Next(1, 9);
 maze[linhaObjetivo, 48] = 3;
-
+#endregion
 definedObstacles(maze, rand);
 showMaze(maze);
 await Task.Delay(1000);
 Console.WriteLine("Em Real time o robo montará o melhor caminho!");
 await Task.Delay(2000);
-Console.Clear();
+//Console.Clear();
+while(shoudVerifyPos.Count > 0)
+{
+
+}
 void showMaze(int[,] maze)
 {
     for (int i = 0; i < maze.GetLength(0); i++)
